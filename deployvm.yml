@@ -28,6 +28,7 @@
         hostname: vcsa-01.mediacloud.lab
         username: administrator@lab.local
         password: VMware1!
+        datacenter: MEDIACLOUD.LAB
         cluster: CLUS-MDCLAB-01
         validate_certs: no
         folder: "2. VMs"
