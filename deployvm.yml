@@ -51,4 +51,6 @@
 
 - name: Test Connection with the new VM
   hosts: just_created
-  ping: 
+  tasks:
+    - name: Check for required variables
+      ping:
