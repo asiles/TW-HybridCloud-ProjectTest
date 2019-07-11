@@ -32,7 +32,7 @@
         cluster: CLUS-MDCLAB-01
         validate_certs: no
         folder: "2. VMs"
-        name: testvm_2
+        name: testvm_3
         state: poweredon
         template: "PlantillaCentos - 110719"
         datastore: shared-sata-01
@@ -43,3 +43,12 @@
     - name: IP address info
       debug:
         msg: "{{ newvm.instance.ipv4 }} {{ name }}"
+
+    - name: add host to group 'just_created' with variable foo=42
+      add_host:
+        name: "{{ newvm.instance.ipv4 }}"
+        groups: just_created
+
+    - name: Test Connection with the new VM
+      hosts: just_created
+      ping: 
