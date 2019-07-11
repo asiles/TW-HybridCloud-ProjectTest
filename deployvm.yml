@@ -49,6 +49,6 @@
         name: "{{ newvm.instance.ipv4 }}"
         groups: just_created
 
-    - name: Test Connection with the new VM
-      hosts: just_created
-      ping: 
+- name: Test Connection with the new VM
+  hosts: just_created
+  ping: 
