@@ -11,6 +11,8 @@
     vmtemplate: "PlantillaCentos - 110719"
     vmcluster: CLUS-MDCLAB-01
     notes: Created by Ansible
+    vcenter_user: administrator@lab.local
+    vcenter_pass: VMware1!
     dumpfacts: False
   tasks:
     - name: Check for required variables
