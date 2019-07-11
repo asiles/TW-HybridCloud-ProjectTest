@@ -32,7 +32,7 @@
         cluster: CLUS-MDCLAB-01
         validate_certs: no
         folder: "2. VMs"
-        name: testvm_6
+        name: testvm_7
         state: poweredon
         template: "PlantillaCentos - 110719"
         datastore: shared-sata-01
@@ -54,7 +54,7 @@
         hash_host: no
         path: /root/.ssh/known_hosts
         name: "{{newvm.instance.ipv4}}"
-        key: "ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBOAC/oVgOESAtN177Ru6NZYPp24OCiDETiJm9js27mvnHEy2fo7dHTM7I4LBqG+U1EBTDYtbb10GqkZwYTgD5/g="
+        key: "{{newvm.instance.ipv4}} ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBOAC/oVgOESAtN177Ru6NZYPp24OCiDETiJm9js27mvnHEy2fo7dHTM7I4LBqG+U1EBTDYtbb10GqkZwYTgD5/g="
 
 - name: Test Connection with the new VM
   hosts: just_created
