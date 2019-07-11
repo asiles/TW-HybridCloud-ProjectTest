@@ -14,4 +14,3 @@
     cluster: CLUS-MDCLAB-01
     vm_extra_config:
       folder: "2. VMs"
-  delegate_to: localhost
