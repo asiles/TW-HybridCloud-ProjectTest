@@ -1,42 +1,42 @@
-  ---
-  - name: VM from template
-    hosts: localhost
-    gather_facts: false
-    connection: local
-    vars:
-      name: testvm_2
-      vcenter_hostname: vcsa-01.mediacloud.lab
-      esxhost: esxi-01.mediacloud.lab
-      datastore: shared-sata-01
-      vmtemplate: "PlantillaCentos - 110719"
-      vmcluster: CLUS-MDCLAB-01
-      notes: Created by Ansible
-      dumpfacts: False
-    tasks:
-      - name: Check for required variables
-        fail: msg="Must pass name and group to -e"
-        when: name is not defined or group is not defined
+---
+- name: VM from template
+  hosts: localhost
+  gather_facts: false
+  connection: local
+  vars:
+    name: testvm_2
+    vcenter_hostname: vcsa-01.mediacloud.lab
+    esxhost: esxi-01.mediacloud.lab
+    datastore: shared-sata-01
+    vmtemplate: "PlantillaCentos - 110719"
+    vmcluster: CLUS-MDCLAB-01
+    notes: Created by Ansible
+    dumpfacts: False
+  tasks:
+    - name: Check for required variables
+      fail: msg="Must pass name and group to -e"
+      when: name is not defined or group is not defined
 
-      - name: Check for vSphere access parameters
-        fail: msg="Must set vcenter_user and vcenter_pass in a Vault"
-        when: (vcenter_user is not defined) or (vcenter_pass is not defined)
-        
-      - name: Create VM from template
-        vmware_guest:
-          hostname: vcsa-01.mediacloud.lab
-          username: administrator@lab.local
-          password: VMware1!
-          cluster: CLUS-MDCLAB-01
-          validate_certs: no
-          folder: "2. VMs"
-          name: testvm_2
-          state: poweredon
-          template: "PlantillaCentos - 110719"
-          datastore: shared-sata-01
-          wait_for_ip_address: True
-          state: present
-        register: newvm
-        
-      - name: IP address info
-        debug:
-          msg: "{{ newvm.instance.ipv4 }} {{ name }}"
+    - name: Check for vSphere access parameters
+      fail: msg="Must set vcenter_user and vcenter_pass in a Vault"
+      when: (vcenter_user is not defined) or (vcenter_pass is not defined)
+      
+    - name: Create VM from template
+      vmware_guest:
+        hostname: vcsa-01.mediacloud.lab
+        username: administrator@lab.local
+        password: VMware1!
+        cluster: CLUS-MDCLAB-01
+        validate_certs: no
+        folder: "2. VMs"
+        name: testvm_2
+        state: poweredon
+        template: "PlantillaCentos - 110719"
+        datastore: shared-sata-01
+        wait_for_ip_address: True
+        state: present
+      register: newvm
+      
+    - name: IP address info
+      debug:
+        msg: "{{ newvm.instance.ipv4 }} {{ name }}"
