@@ -1,15 +1,17 @@
 ---
 # This playbook uses the win_ping module to test connectivity to Windows hosts
-- name: DeployVM
-  hosts: localhost 
-  
-  - vsphere_guest:
-    vcenter_hostname: vcsa-01.mediacloud.lab
+- name: Create a virtual machine from a template
+  vmware_guest:
+    hostname: vcsa-01.mediacloud.lab
     username: administrator@lab.local
     password: VMware1!
-    guest: newvm001
-    from_template: yes
-    template_src: "PlantillaCentos - 110719"
     cluster: CLUS-MDCLAB-01
-    vm_extra_config:
-      folder: "2. VMs"
+    validate_certs: no
+    folder: "2. VMs"
+    name: testvm_2
+    state: poweredon
+    template: "PlantillaCentos - 110719"
+    datastore: shared-sata-01
+    wait_for_ip_address: yes
+  delegate_to: localhost
+  register: deploy
