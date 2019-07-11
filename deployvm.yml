@@ -32,7 +32,7 @@
         cluster: CLUS-MDCLAB-01
         validate_certs: no
         folder: "2. VMs"
-        name: testvm_8
+        name: testvm_9
         state: poweredon
         template: "PlantillaCentos - 110719"
         datastore: shared-sata-01
@@ -50,9 +50,9 @@
         groups: just_created
 
     - name: tell the host about our servers it might want to ssh to
+      become: yes
+      become_metod: sudo
       known_hosts:
-        become: yes
-        become_metod: sudo
         path: /root/.ssh/known_hosts
         name: "{{newvm.instance.ipv4}}"
         key: "{{newvm.instance.ipv4}} ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBOAC/oVgOESAtN177Ru6NZYPp24OCiDETiJm9js27mvnHEy2fo7dHTM7I4LBqG+U1EBTDYtbb10GqkZwYTgD5/g="
