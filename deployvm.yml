@@ -5,6 +5,7 @@
   connection: local
   become: yes
   become_method: sudo 
+  become_flags: "-i"
   vars:
     name: testvm_2
     vcenter_hostname: vcsa-01.mediacloud.lab
