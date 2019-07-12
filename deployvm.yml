@@ -1,8 +1,7 @@
 ---
 - name: VM from template
-  hosts: localhost
+  hosts: all
   gather_facts: false
-  connection: local
   vars:
     vm_name: testvm_2
     vcenter_hostname: vcsa-01.mediacloud.lab
