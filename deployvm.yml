@@ -4,8 +4,6 @@
   gather_facts: false
   connection: local
   remote_user: root
-  become: true
-  become_method: su
   vars:
     name: testvm_2
     vcenter_hostname: vcsa-01.mediacloud.lab
@@ -47,7 +45,7 @@
       debug:
         msg: "{{ newvm.instance.ipv4 }} {{ name }}"
 
-    - name: add host to group 'just_created' with variable foo=42
+    - name: add host to group 'just_created' 
       add_host:
         name: "{{ newvm.instance.ipv4 }}"
         groups: just_created
