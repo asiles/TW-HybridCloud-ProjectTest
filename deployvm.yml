@@ -3,9 +3,7 @@
   hosts: localhost
   gather_facts: false
   connection: local
-  become: yes
-  become_method: sudo 
-  become_flags: "-i"
+  become: true
   vars:
     name: testvm_2
     vcenter_hostname: vcsa-01.mediacloud.lab
