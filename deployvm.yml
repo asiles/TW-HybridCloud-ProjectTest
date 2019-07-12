@@ -4,7 +4,6 @@
   gather_facts: false
   connection: local
   remote_user: root
-  become: yes
   vars:
     vm_name: testvm_2
     vcenter_hostname: vcsa-01.mediacloud.lab
@@ -19,7 +18,7 @@
   tasks:
     - name: Check for required variables
       fail: msg="Must pass name and group to -e"
-      when: name is not defined
+      when: vm_name is not defined
 
     - name: Check for vSphere access parameters
       fail: msg="Must set vcenter_user and vcenter_pass in a Vault"
