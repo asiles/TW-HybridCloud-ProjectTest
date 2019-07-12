@@ -4,6 +4,11 @@
   gather_facts: false
   connection: local
   vars:
+    ANSIBLE_BECOME_EXE: 'sudo su -'
+  become: yes
+  become_method: su
+  become_user: root
+  vars:
     name: testvm_2
     vcenter_hostname: vcsa-01.mediacloud.lab
     esxhost: esxi-01.mediacloud.lab
@@ -50,11 +55,6 @@
         groups: just_created
 
     - name: tell the host about our servers it might want to ssh to
-      vars:
-        ANSIBLE_BECOME_EXE: 'sudo su -'
-      become: yes
-      become_method: su
-      become_user: root
       known_hosts:
         path: /root/.ssh/known_hosts
         name: "{{newvm.instance.ipv4}}"
