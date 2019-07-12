@@ -32,7 +32,7 @@
         cluster: CLUS-MDCLAB-01
         validate_certs: no
         folder: "2. VMs"
-        name: testvm_11
+        name: testvm_12
         state: poweredon
         template: "PlantillaCentos - 110719"
         datastore: shared-sata-01
@@ -54,6 +54,7 @@
         ANSIBLE_BECOME_EXE: 'sudo su -'
       become: yes
       become_method: su
+      become_user: root
       known_hosts:
         path: /root/.ssh/known_hosts
         name: "{{newvm.instance.ipv4}}"
