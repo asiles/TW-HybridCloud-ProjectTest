@@ -3,9 +3,7 @@
   hosts: localhost
   gather_facts: false
   connection: local
-  remote_user: root
   become: yes
-  become_user: root
   vars:
     vm_name: testvm_2
     vcenter_hostname: vcsa-01.mediacloud.lab
