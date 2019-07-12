@@ -3,9 +3,7 @@
   hosts: localhost
   gather_facts: false
   connection: local
-  become: yes
-  become_method: sudo
-  become_user: root
+  ansible_user: root
   vars:
     vm_name: testvm_2
     vcenter_hostname: vcsa-01.mediacloud.lab
