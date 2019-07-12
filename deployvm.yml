@@ -3,6 +3,7 @@
   hosts: localhost
   gather_facts: false
   connection: local
+  remote_user: root
   become: true
   vars:
     name: testvm_2
