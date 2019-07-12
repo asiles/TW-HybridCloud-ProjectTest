@@ -3,8 +3,6 @@
   hosts: localhost
   gather_facts: false
   connection: local
-  vars:
-    ANSIBLE_BECOME_EXE: 'sudo su -'
   become: yes
   become_method: su
   become_user: root
