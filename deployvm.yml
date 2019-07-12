@@ -5,7 +5,7 @@
   connection: local
   remote_user: root
   vars:
-    name: testvm_2
+    vm_name: testvm_2
     vcenter_hostname: vcsa-01.mediacloud.lab
     esxhost: esxi-01.mediacloud.lab
     datastore: shared-sata-01
@@ -40,10 +40,14 @@
         wait_for_ip_address: True
         state: present
       register: newvm
+
+    - name: NewVM info
+      debug:
+        msg: "{{ newvm }}"
       
     - name: IP address info
       debug:
-        msg: "{{ newvm.instance.ipv4 }} {{ name }}"
+        msg: "{{ newvm.instance.ipv4 }} {{ vm_name }}"
 
     - name: add host to group 'just_created' 
       add_host:
