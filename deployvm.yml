@@ -3,7 +3,7 @@
   hosts: localhost
   gather_facts: false
   vars:
-    vm_name: testvm_14
+    vm_name: testvm_15
     vcenter_hostname: vcsa-01.mediacloud.lab
     esxhost: esxi-01.mediacloud.lab
     datastore: shared-sata-01
@@ -24,14 +24,14 @@
       
     - name: Create VM from template
       vmware_guest:
-        hostname: vcsa-01.mediacloud.lab
-        username: administrator@lab.local
-        password: VMware1!
+        hostname: {{ vcenter_hostname }}
+        username: {{ vcenter_user }}
+        password: {{ vcenter_pass }}
         datacenter: MEDIACLOUD.LAB
         cluster: CLUS-MDCLAB-01
         validate_certs: no
         folder: "2. VMs"
-        name: testvm_14
+        name: {{ vm_name }}
         state: poweredon
         template: "PlantillaCentos - 110719"
         datastore: shared-sata-01
