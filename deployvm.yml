@@ -46,20 +46,3 @@
     - name: IP address info
       debug:
         msg: "{{ newvm.instance.ipv4 }} {{ vm_name }}"
-
-    - name: add host to group 'just_created' 
-      add_host:
-        name: "{{ newvm.instance.ipv4 }}"
-        groups: just_created
-
-    - name: tell the host about our servers it might want to ssh to
-      known_hosts:
-        path: /root/.ssh/known_hosts
-        name: "{{newvm.instance.ipv4}}"
-        key: "{{newvm.instance.ipv4}} ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBOAC/oVgOESAtN177Ru6NZYPp24OCiDETiJm9js27mvnHEy2fo7dHTM7I4LBqG+U1EBTDYtbb10GqkZwYTgD5/g="
-
-- name: Test Connection with the new VM
-  hosts: just_created
-  tasks:
-    - name: Check for required variables
-      ping:
