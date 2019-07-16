@@ -24,14 +24,14 @@
       
     - name: Create VM from template
       vmware_guest:
-        hostname: {{ vcenter_hostname }}
-        username: {{ vcenter_user }}
-        password: {{ vcenter_pass }}
+        hostname: "{{ vcenter_hostname }}"
+        username: "{{ vcenter_user }}"
+        password: "{{ vcenter_pass }}"
         datacenter: MEDIACLOUD.LAB
         cluster: CLUS-MDCLAB-01
         validate_certs: no
         folder: "2. VMs"
-        name: {{ vm_name }}
+        name: "{{ vm_name }}"
         state: poweredon
         template: "PlantillaCentos - 110719"
         datastore: shared-sata-01
