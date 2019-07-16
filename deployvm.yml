@@ -2,17 +2,6 @@
 - name: VM from template
   hosts: localhost
   gather_facts: false
-  vars:
-    vm_name: testvm_15
-    vcenter_hostname: vcsa-01.mediacloud.lab
-    esxhost: esxi-01.mediacloud.lab
-    datastore: shared-sata-01
-    vmtemplate: "PlantillaCentos - 110719"
-    vmcluster: CLUS-MDCLAB-01
-    notes: Created by Ansible
-    vcenter_user: administrator@lab.local
-    vcenter_pass: VMware1!
-    dumpfacts: False
   tasks:
     - name: Check for required variables
       fail: msg="Must pass name and group to -e"
