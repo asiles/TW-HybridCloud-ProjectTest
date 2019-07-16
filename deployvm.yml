@@ -1,6 +1,6 @@
 ---
 - name: VM from template
-  hosts: all
+  hosts: localhost
   gather_facts: false
   vars:
     vm_name: testvm_2
