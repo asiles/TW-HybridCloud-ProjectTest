@@ -3,7 +3,7 @@
   hosts: localhost
   gather_facts: false
   vars:
-    vm_name: testvm_2
+    vm_name: testvm_14
     vcenter_hostname: vcsa-01.mediacloud.lab
     esxhost: esxi-01.mediacloud.lab
     datastore: shared-sata-01
@@ -31,10 +31,11 @@
         cluster: CLUS-MDCLAB-01
         validate_certs: no
         folder: "2. VMs"
-        name: testvm_12
+        name: testvm_14
         state: poweredon
         template: "PlantillaCentos - 110719"
         datastore: shared-sata-01
+        resource_pool: Lab-VMs
         wait_for_ip_address: True
         state: present
       register: newvm
