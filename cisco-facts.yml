@@ -9,7 +9,6 @@
   - name: IOS | Show clock
     ios_command:
       commands:
-        - show version
         - show interfaces
     register: facts
 
