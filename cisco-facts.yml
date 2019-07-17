@@ -11,3 +11,6 @@
       commands:
         - show version
         - show interfaces
+    register: facts
+
+  - debug: msg="{{ facts }}"
