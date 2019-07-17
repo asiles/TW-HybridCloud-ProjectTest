@@ -7,8 +7,7 @@
 
   tasks:
   - name: IOS | Show clock
-    ios_facts:
-      gather_subset: all
-    register: facts
-
-  - debug: msg="{{ facts }}"
+    ios_command:
+      commands:
+        - show version
+        - show interfaces
