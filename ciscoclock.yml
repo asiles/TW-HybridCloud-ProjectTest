@@ -1,0 +1,13 @@
+
+---
+- hosts: all
+
+  tasks:
+  - name: IOS | Show clock
+    ios_command:
+      provider: "{{ provider }}"
+      commands:
+        - show clock
+    register: clock
+
+  - debug: msg="{{ clock.stdout }}"
